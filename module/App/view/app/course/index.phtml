@@ -1,0 +1,52 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var \App\Model\Course[] $items
+ * @todo pagination
+ */
+
+
+?>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3>Courses list</h3>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course name</th>
+                <th>Number of Students</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($items as $item) {
+            ?>
+            <tr>
+                <td><?= $item->getId(); ?></td>
+                <td><a href="<?=$this->url('course', ['action' => 'edit', 'id' => $item->getId()])?>"><?= $item->getName(); ?></a></td>
+                <td>0</td>
+                <td>
+                    <a href="<?php echo $this->url('students', ['action' => 'list', 'id' => $item->getId()]) ?>" class="btn btn-success btn-sm">View students list</a>
+                    &nbsp;
+                    <button class="btn btn-info btn-sm">Edit</button>
+                    &nbsp;
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+            <?php
+        } ?>
+
+        <tr>
+            <td colspan="4">
+                <a href="<?php echo $this->url('course', ['action' => 'create']) ?>" class="btn btn-default">Create
+                    course</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

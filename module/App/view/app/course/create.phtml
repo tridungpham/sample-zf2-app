@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @todo CSRF protection
+ */
+?>
+<form class="form-horizontal" method="post" action="<?= $this->url('course', ['action' => 'save']) ?>">
+    <legend>Create new course</legend>
+    <div class="form-group">
+        <label for="course_name" class="control-label col-sm-2">Course name</label>
+        <div class="controls col-sm-6">
+            <input type="text" name="name" class="form-control" id="course_name" placeholder="Insert course name...">
+        </div>
+    </div>
+
+    <?php if (isset($course)):?>
+        <input type="hidden" name="id" value="<?=$course->getId()?>">
+    <?php endif; ?>
+
+    <div class="form-group">
+        <div class="controls col-sm-6 col-sm-offset-2">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>

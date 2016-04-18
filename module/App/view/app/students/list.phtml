@@ -1,0 +1,44 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var \App\Model\Course $course
+ * @var \App\Model\Student[] $items
+ * @todo pagination
+ */
+?>
+
+<div class="page-header">
+    <h3>Students list for course <strong><?=$course->getName();?></strong></h3>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <?php if (count($items)): ?>
+        <?php foreach ($items as $student): ?>
+        <tr>
+            <td><?=$student->getId();?></td>
+            <td><?=$student->getName();?></td>
+            <td></td>
+        </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="3">No students enroll in this course yet</td>
+        </tr>
+    <?php endif; ?>
+
+    <tr>
+        <td colspan="3">
+            <a href="<?=$this->url('student', ['action' => 'create'], ['query' => ['course' => $course->getId()]])?>" class="btn btn-default">Add new student</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
